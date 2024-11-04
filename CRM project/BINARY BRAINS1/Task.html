@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body{
+    background-color: lightblue;
+    text-align: center;
+    font-size: 25pxS;
+  }
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+float:right;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+.inline { 
+   display:inline;
+}
+</style>
+</head>
+<body>
+<div>
+<img src="logo1.jpg" style="position:absolute;height:50px;" />
+<div class="topnav">
+  <a class="" href="Home.html">Home</a>
+  <a class="" href="Sales.html">Sales</a>
+  <a href="Task.html">Task</a>
+  <a href="Contact.html">Contact</a>
+</div>
+<body>
+    <h1>Task Manager</h1>
+    <img src="img3.jpeg">
+    <div id="taskList">
+        <!-- Tasks will be displayed here -->
+    </div>
+    
+    <form id="taskForm">
+        <input type="text" id="taskInput" placeholder="Enter task">
+        <button type="submit">Add Task</button>
+    </form>
+
+    <script>
+        // JavaScript code to add functionality incrementally
+        const taskForm = document.getElementById('taskForm');
+        const taskInput = document.getElementById('taskInput');
+        const taskList = document.getElementById('taskList');
+
+        taskForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const taskText = taskInput.value.trim();
+            if (taskText !== '') {
+                addTask(taskText);
+                taskInput.value = ''; // Clear input field
+            }
+        });
+
+        function addTask(taskText) {
+            const taskItem = document.createElement('div');
+            taskItem.classList.add('task-item');
+            taskItem.textContent = taskText;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = '❌';
+            deleteButton.classList.add('delete-btn');
+            deleteButton.addEventListener('click', function() {
+                taskItem.remove();
+            });
+
+            taskItem.appendChild(deleteButton);
+            taskList.appendChild(taskItem);
+        }
+    </script>
+</body>
+</html>
+
+</body>
+</html>
